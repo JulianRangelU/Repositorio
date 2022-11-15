@@ -3,44 +3,28 @@
 from bs4 import BeautifulSoup
         
         # if the cell is not assigned then ignore it
-        if neighborhoods_data == 'Not assigned':
-            neighborhoods = []
+        if games_data == 'Not assigned':
+            games = []
         # else process the data and add it to the dictionary
         else:
-            postal_codes_dict[postal_code] = {}
+            games_codes_dict[games_code] = {}
             
             try:
-                neighborhoods = neighborhoods_data.split('(')[1]
+                games = games_data.split('(')[1]
             
-                # remove parantheses from neighborhoods string
-                neighborhoods = neighborhoods.replace('(', ' ')
-                neighborhoods = neighborhoods.replace(')', ' ')
+                # remove parantheses from gamesstring
+                games = ngames.replace('(', ' ')
+                games = games.replace(')', ' ')
 
-                neighborhoods_names = neighborhoods.split('/')
-                neighborhoods_clean = ', '.join([name.strip() for name in neighborhoods_names])
+                games_names = games.split('/')
+                games_clean = ', '.join([name.strip() for name in games_names])
             except:
                 borough = borough.strip('\n')
-                neighborhoods_clean = borough
+                games_clean = borough
  
-            # add borough and neighborhood to dictionary
-            postal_codes_dict[postal_code]['borough'] = borough
-            postal_codes_dict[postal_code]['neighborhoods'] = neighborhoods_clean
+            # add borough and games to dictionary
+            games_codes_dict[postal_code]['borough'] = borough
+            games_codes_dict[postal_code]['games'] = games_clean
     except:
         pass
     
-# create an empty dataframe
-columns = ['PostalCode', 'Borough', 'Neighborhood']
-toronto_data = pd.DataFrame(columns=columns)
-toronto_data
-
-# populate dataframe with data from dictionary
-for ind, postal_code in enumerate(postal_codes_dict):
-    borough = postal_codes_dict[postal_code]['borough']
-    neighborhood = postal_codes_dict[postal_code]['neighborhoods']
-    toronto_data = toronto_data.append({"PostalCode": postal_code, 
-                                        "Borough": borough, 
-                                        "Neighborhood": neighborhood},
-                                        ignore_index=True)
-
-# print number of rows of dataframe
-toronto_data.shape[0]
