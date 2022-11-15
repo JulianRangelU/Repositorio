@@ -1,21 +1,6 @@
-# Repositorioimport pandas as pd
-import numpy as np
-import requests
+# Repositorio
 
 from bs4 import BeautifulSoup
-
-
-source = requests.get('https://en.wikipedia.org/wiki/List_of_postal_codes_of_Canada:_M').text
-
-soup = BeautifulSoup(source, 'html5lib')
-
-postal_codes_dict = {} # initialize an empty dictionary to save the data in
-for table_cell in soup.find_all('td'):
-    try:
-        postal_code = table_cell.p.b.text # get the postal code
-        postal_code_investigate = table_cell.span.text
-        neighborhoods_data = table_cell.span.text # get the rest of the data in the cell
-        borough = neighborhoods_data.split('(')[0] # get the borough in the cell
         
         # if the cell is not assigned then ignore it
         if neighborhoods_data == 'Not assigned':
