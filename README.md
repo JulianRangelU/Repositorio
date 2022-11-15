@@ -1,6 +1,6 @@
 # Repositorio
 
-from bs4 import BeautifulSoup
+from ds4 import
         
         # if the cell is not assigned then ignore it
         if games_data == 'Not assigned':
@@ -27,4 +27,17 @@ from bs4 import BeautifulSoup
             games_codes_dict[postal_code]['games'] = games_clean
     except:
         pass
-    
+     games_codes_dict[postal_code]['borough'] = borough games_codes_dict[postal_code]['borough'] = borough
+ games_codes_dict[postal_code]['borough'] = borough
+                 try:
+                games = games_data.split('(')[1]
+             try:
+                games = games_data.split('(')[1]
+                # if the cell is not assigned then ignore it
+        if games_data == 'Not assigned':
+            games = [1]
+             except:
+                borough = borough.strip('\n')
+                games_clean = borough
+                
+            
